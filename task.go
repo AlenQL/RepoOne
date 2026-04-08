@@ -136,7 +136,7 @@ func callPluginAPI(ctx *context.Context, task string, sessionID string, metadata
 		Metadata:  metadata,
 	}
 
-	resp, status, err := ai.CallAIChatAgentAPI(ctx, "POST", "/message/send", requestBody)
+	resp, status, err := ai.CallAgentAPI(ctx, "POST", "/chat/message/send", requestBody)
 	if err != nil {
 		log.WithCtx(ctx).Errorf("[AI] Error calling plugin: %v", err)
 		ctx.JSON(status, apiError.ApiError{Code: 1000, Message: err.Error()})
